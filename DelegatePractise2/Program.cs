@@ -6,35 +6,14 @@
     {
         static void Main(string[] args)
         {
-            Calculate(5, 3, Add);
-            Calculate(5, 3, Minus);
-            Calculate(5, 3, Multiply);
-        }
 
-        static T Calculate<T>(T a, T b, OperationsDelegate<T> operation)
-        {
-            return operation(a, b);
-        }
+            Func<int, int, int> Add = (a, b) => a + b;
+            Func<int, int, int> Minus = (a, b) => a - b;
+            Func<int, int, int> Multiply = (a, b) => a * b;
 
-        static T Add<T>(T a, T b)
-        {
-            dynamic x = a;
-            dynamic y = b;
-            return x + y;
-        }
-
-        static T Minus<T>(T a, T b)
-        {
-            dynamic x = a;
-            dynamic y = b;
-            return x - y;
-        }
-
-        static T Multiply<T>(T a, T b)
-        {
-            dynamic x = a;
-            dynamic y = b;
-            return x * y;
+            Console.WriteLine(Add.Invoke(5, 3));
+            Console.WriteLine(Minus.Invoke(5, 3));
+            Console.WriteLine(Multiply.Invoke(5, 3));
         }
     }
 }
